@@ -1,0 +1,15 @@
+{
+  "single-page-markdown-website": {
+    "baseUrl": "https://yuanqing.github.io/single-page-markdown-website/",
+    "title": "Single-Page Markdown Website",
+    "description": "Create a nice single-page documentation website from one or more Markdown files",
+    "toc": false,
+    "sections": true,
+    "links": [
+      {
+        "text": "GitHub",
+        "url": "https://github.com/yuanqing/single-page-markdown-website"
+      }
+    ]
+  }
+}
