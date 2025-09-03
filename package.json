@@ -1,11 +1,7 @@
 {
-   "single-page-markdown-website": {
-    "baseUrl": null,
+  "single-page-markdown-website": {
     "title": "ASWU Senator Elections — Fall 2025",
-    "description": null,
     "toc": false,
-    "sections": false,
-    "faviconImage": null,
-    "shareImage": null
+    "sections": false
   }
 }
