@@ -17,7 +17,7 @@
 *.so.*
 *.dylib
 *.exe
-*.out
+*.
 *.app
 *.i*86
 *.x86_64
@@ -65,7 +65,7 @@ replay_pid*
 cmake-build-*/
 .idea/**/mongoSettings.xml
 *.iws
-out/
+/
 .idea_modules/
 atlassian-ide-plugin.xml
 .idea/replstate.xml
@@ -97,7 +97,6 @@ fabric.properties
 *.dvi
 *.xdv
 *-converted-to.*
-.pdf
 *.bbl
 *.bcf
 *.blg
@@ -110,7 +109,7 @@ fabric.properties
 *.synctex.gz
 *.synctex.gz(busy)
 *.pdfsync
-latex.out/
+latex./
 *.alg
 *.loa
 acs-*.bib
@@ -196,7 +195,7 @@ _minted*
 *.sagetex.scmd
 *.wrt
 svg-inkscape/
-*.sout
+*.s
 *.sympy
 sympy-plots-for-*.tex/
 *.upa
