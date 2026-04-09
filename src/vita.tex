@@ -8,27 +8,46 @@
 \usepackage{tabularx}
 \usepackage[sfdefault, lf]{carlito}
 \usepackage[rmdefault]{libertinus}
+\usepackage{paracol}
+\usepackage{environ}
 
-\newcommand{\firstcolumn}{0.46}
-\newcommand{\secondcolumn}{0.52}
+\newcommand{\firstcolumn}{0.50}
+\newcommand{\secondcolumn}{0.48}
+\newcommand{\spacing}{\vspace{3pt}}
+\newcommand{\subspacing}{\vspace{1pt}}
 
-\renewcommand{\titlefont}{\huge \bfseries \rmfamily}
+\renewcommand{\titlefont}{\huge \bfseries \rmfamily \color{color1}}
 \renewcommand{\sectionfont}{\Large \bfseries \rmfamily}
-
 \renewcommand*{\labelitemi}{-}
 
 \newcolumntype{L}{>{\raggedright\arraybackslash}X}
 \newcolumntype{C}{>{\centering\arraybackslash}X}
 \newcolumntype{R}{>{\raggedleft\arraybackslash}X}
+\newcolumntype{B}{>{\bfseries}l}
+\newcolumntype{S}{@{\hskip 1em} }
 
-\newcommand*{\entry}[2]{
+\newcommand*{\entry}[3]{
 	\textbf{#1} \subsectionrule \textit{#2}
-	\smallskip
+	\ifx
+		\relax#3\relax
+		\par
+	\else
+		\begin{itemize}
+		#3
+		\end{itemize}
+	\fi
+	\subspacing
+}
+
+\NewEnviron{entrytable}{
+	\begin{tabularx}{\linewidth}{@{} B S X @{}}
+        \BODY
+	\end{tabularx}
 }
 
 \begin{document}
 	{\titlefont Teddy Wachtler} \sectionrule
-	\par \medskip
+	\par \spacing
 	\begin{tabularx}{\textwidth}{L L L}
 		\textit{Postal:} 3058 N Rockmont Ave \par
 		\phantom{\textit{Postal:}} Claremont, CA, 91711 &
@@ -37,116 +56,93 @@
 		\textit{Phone:} +1--909--407--1640 \par
 		\textit{Site:} \href{https://thwamster.github.io/}{thwamster.github.io} \\
 	\end{tabularx}
-	\par \smallskip
-	\begin{minipage}[t]{\firstcolumn \textwidth}
-		\section{Education} \label{sec:education}
-		\entry{Willamette University}{Aug. 2025--May 2026}
-		\begin{itemize}
-			\item B.A., Politics, Policy, Law, \& Ethics.
-			GPA: 4.00.
-		\end{itemize}
-		\smallskip
-		\entry{Damien High School}{Aug. 2021--May 2025}
-		\begin{itemize}
-			\item Valedictorian, Junior of the Year, AP Scholar with Distinction, and NMSC commended student.
-			\item Certificates of outstanding achievement in 18 classes.
-			GPA: 4.55 (3.98 u.).
-			\item Participated in the Project Lead the Way Engineering and Computer Science programs.
-		\end{itemize}
 
-		\section{Experience} \label{sec:experience}
-		\entry{Contracted Researcher}{Feb. 2026--Present}
-		\begin{itemize}
-			\item Participated in the CRA UR2PhD Research Experiences for Undergraduates program.
-			\item Explored the application of machine learning algorithms to the opioid epidemic through a spatio-temporal perspective.
-		\end{itemize}
-		\smallskip
-		\entry{CAD Designer}{Jul. 2022--Aug. 2022}
-		\begin{itemize}
-			\item Produced a professional portfolio of a CAD project including technical drawings and 3D files.
-		\end{itemize}
+	\spacing
+
+	\begin{minipage}[t]{\firstcolumn \textwidth}
+
+		\section{Education} \label{sec:education}
+		\entry{Willamette University}{Present}{
+			\item B.A., Politics, Policy, Law, \& Ethics. GPA: 4.00.
+			\item Served on the executive board of 3 student organizations.
+		}
+		\entry{Damien High School}{Aug. 2021--May 2025}{
+			\item Valedictorian, Junior of the Year, AP Scholar with Distinction, and NMSC commended student. GPA: 4.55 (3.98 u.).
+			\item Certificates of outstanding achievement in 18 classes.
+			\item Participated in the Project Lead the Way Engineering and Computer Science programs.
+		}
 
 		\section{Extracurriculars} \label{sec:extracurriculars}
-		\entry{Stagecraft}{Jan. 2026--Present}
-		\par
-		\smallskip
-		\entry{Scouting America}{Jul. 2018--May 2025}
-		\begin{itemize}
-			\item Eagle Scout pending Board of Review. Troop 403.
-			\item Vast volunteer experience in instruction, maintenance, and conservation.
-			\item Led classes for youth aged 11--17 in domestic and national politics, fitness, communication, env. science, and metalworking.
-		\end{itemize}
-		\smallskip
-		\entry{Robotics}{Aug. 2024--Jan. 2025}
-		\begin{itemize}
-			\item Lead coder of autonomous and driver control programs in team.
-			\item Maintained thorough and industry-appropriate documentation.
-		\end{itemize}
-		\smallskip
-		\entry{Christian Leadership}{Aug. 2024--May 2025}
-		\begin{itemize}
-			\item Led religious retreats for peers aimed at community building and spiritual growth.
-		\end{itemize}
-		\smallskip
-		\entry{Dungeons and Dragons Club}{Oct. 2021--Present}
-		\begin{itemize}
-			\item President in HS and Treasurer in College.
-		\end{itemize}
-		\smallskip
-		\entry{Ultimate Frisbee Club}{Oct. 2023--Oct. 2024}
-		\begin{itemize}
-			\item Secretary. Managed communication and statistics.
-		\end{itemize}
-		\smallskip
-		\entry{Road Cycling Club}{Aug. 2021--Dec. 2022}
-		\par
+		\entry{British Parliamentary Debate}{Aug. 2025--Present}{
+			\item Debate Union Treasurer; Managed a \$3,000 budget and coordinated expenditures across registration, travel, and other forensic events.
+			\item Competed in local and national circuits, accumulating multiple finals placements and speaker awards.
+		}
+		\entry{Policy Debate}{Aug. 2021--Apr. 2025}{
+			\item Varsity letter and team captain; Constructed numerous research-based defenses of policy and critical propositions.
+			\item Competed on the national circuit with numerous deep tournament runs and qualified to the Tournament of Champions twice.
+		}
+		\entry{Model United Nations Club}{Aug. 2025--Present}{
+			\item Treasurer; Organized the hosting of multiple conferences.
+		}
+		\entry{Mock Trial}{Sep. 2023--Dec. 2024}{
+			\item Team captain, club Vice President, lead pre-trial attorney, and primary student organizer.
+		}
+		\entry{Scouting America}{Jul. 2018--May 2025}{
+			\item Troop 403; Eagle Scout (Board of Review pending). \item Project consisted of significant landscaping, woodworking, and repair efforts at a children's center over 130 hours.
+			\item Led classes for youth aged 11--17 in domestic and national politics, fitness, communication, environmental science, and metalworking.
+		}
+		\entry{Robotics}{Aug. 2024--Jan. 2025}{
+			\item Lead coder for national-circuit VEX V5 competition.
+		}
+		\entry{Christian Leadership}{Aug. 2024--May 2025}{
+			\item Led religious retreats for peers with a strong emphasis on community-building and spiritual growth.
+		}
+		\entry{Dungeons and Dragons Club}{Oct. 2021--Present}{
+			\item President in H.S. and Treasurer in college.
+		}
+		\entry{Ultimate Frisbee Club}{Oct. 2023--Oct. 2024}{
+			\item Secretary; Managed communication and statistics.
+		}
+		\entry{Stagecraft}{Jan. 2026--Present}{}
+		\entry{Road Cycling Club}{Aug. 2021--Dec. 2022}{}
 	\end{minipage}
 	\hfill
 	\begin{minipage}[t]{\secondcolumn \textwidth}
-		\section{Forensics} \label{sec:forensics}
-		\entry{Univ. of Michigan Debate Institute}{Jun. 2023--Jul. 2023}
-		\begin{itemize}
-			\item Studied fiscal redistribution and solutions to income inequality with targeted research in the federal workforce, tax code, and U.S. territories.
-		\end{itemize}
-		\smallskip
-		\entry{Gonzaga Univ. Debate Institute}{Jun. 2022--Jul. 2022}
-		\begin{itemize}
-			\item Analyzed U.S.-NATO security cooperation over emerging technologies, specifically regarding integrating machine learning in military and scientific technology.
-		\end{itemize}
-		\smallskip
-		\entry{British Parliamentary Debate}{Aug. 2025--Present}
-		\begin{itemize}
-			\item Debate Union Treasurer. Managed club finances.
-			\item Local and national circuit competition. Two finals placements in open division so far.
-		\end{itemize}
-		\smallskip
-		\entry{Model United Nations Club}{Aug. 2025--Present}
-		\begin{itemize}
-			\item Treasurer. Managed finances and organized all club meetings, events, and competitions.
-		\end{itemize}
-		\smallskip
-		\entry{Policy Debate}{Aug. 2021--Apr. 2025}
-		\begin{itemize}
-			\item Varsity letter and team captain. Built rigorous and research-based defenses of policy and critical propositions.
-			\item National circuit competition, two years of Tournament of Champions qualification, and numerous deep finishes.
-		\end{itemize}
-		\smallskip
-		\entry{Mock Trial}{Sep. 2023--Dec. 2024}
-		\begin{itemize}
-			\item Team captain, club Vice President, lead pre-trial attorney, and primary student organizer.
-		\end{itemize}
-		\smallskip
-		\entry{Research}{}
-		\begin{itemize}
-			\item Significant focused inquiry in international relations, politics, and public action, and synthesis of academic and legal sources into clear political positions.
-			\item Various applications of critical perspectives from queer theory, critical race studies, and postmodernist literature, especially the work of Lacan, Edelman, and Wilderson.
-		\end{itemize}
+		\section{Summary} \label{sec:summary}
+		\textit{Interdisciplinary student and researcher actively engaged in competitive academic discourse, data-driven technical and policy research, and community service.}
+
+		\section{Research \& Programs} \label{sec:research}
+		\entry{Computing Research Association}{Feb. 2026--Present}{
+			\item Contracted researcher in the CRA UR2PhD REU program.
+			\item Explored the application of machine learning algorithms to the opioid epidemic through a spatio-temporal perspective.
+			\item Developing a predictive model to classify overdose risk rates based on the SDoH.
+		}
+		\entry{Univ. of Michigan Debate Institute}{Jun. 2023--Jul. 2023}{
+			\item Studied fiscal redistribution and solutions to income inequality with targeted research on the expansion of SSI to U.S. territories and the adoption of a FJG in the executive branch.
+		}
+		\entry{Gonzaga Univ. Debate Institute}{Jun. 2022--Jul. 2022}{
+			\item Analyzed U.S.-NATO security cooperation over emerging technologies, specifically regarding integrating machine learning in military and scientific technology and combating disinformation with cybersecurity techniques.
+		}
+
+		\section{Project Examples} \label{sec:projects}
+		\entry{QEMU RISC-V Operating System}{Jan. 2026--Present}{
+			\item Building a bare-metal O.S. in C for RISC-V architecture with dynamic memory allocation, error handling with runtime symbol resolution, and an interactive terminal.
+		}
+		\entry{Brick Classifier Prototype}{Aug. 2024--May 2025}{
+			\item Designed and prototyped an automated LEGO sorter machine with a Java host communicating over SSH with an RPI, a VEX V5 brain, and a gRPC server for real-time classification and motor movement.
+		}
+		\entry{Evolutionary Algorithm Sim.}{Jan. 2025--Mar. 2025}{
+			\item Designed and built a C\# genetic algorithm in Unity to complete a simulated game through mutation.
+		}
 
 		\section{Skills} \label{sec:skills}
-		\begin{itemize}
-			\item Proficient with MS Office (particularly Word and PowerPoint), Google Workspace (particularly Sheets), Unity, Git, Linux (particularly Arch), Fusion360, Vim, LVGL, and LibGDX.
-			\item Fluent in Java, C\#, Rust, C++, C, and LaTeX.
-			\item Substantial practical knowledge in maintenance, construction, woodworking, and landscaping through various amateur and volunteer projects.
-		\end{itemize}
+		\begin{entrytable}
+			Languages & Java, C\#, Rust, C, C++, LaTeX \\
+			Software & Git, Vim, Unity, CMake, Fusion360, LVGL \\
+			Platforms & Windows, Linux (Arch), MS Office, Google Workspace, Raspberry Pi \\
+			Engineering & CAD modeling, technical drawing, embedded systems, 3D printing \\
+			Applied & Landscaping, woodworking, construction,  maintenance work
+		\end{entrytable}
+
 	\end{minipage}
 \end{document}
